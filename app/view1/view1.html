@@ -1,0 +1,40 @@
+<div>
+    <ng-ckeditor
+            ng-model="htmlEditor"
+            ng-config="config"
+            ckeditor="ck"
+            syn-res="synRes"
+            remove-buttons="Image"
+            remove-plugins="iframe,flash,smiley">
+    </ng-ckeditor>
+</div>
+
+
+
+
+
+<!-- Button trigger modal -->
+<button style="display: none" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="syn_res"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Synonyms</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li ng-class="{'active' : (activeInd === $index ) }" class="list-group-item" ng-repeat="syn in synRes" ng-click="selectOpt($index,syn.word)">{{syn.word}}</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="addSynToEditor()" data-dismiss="modal">Insert</button>
+            </div>
+        </div>
+    </div>
+</div>
